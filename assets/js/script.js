@@ -31,8 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     setInterval(function() {
         nextButton.click();
-    }, 10000);
-
+    }, 5000);
 
     const links = document.querySelectorAll('a[href^="#"]');
 
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const headerHeight = document.querySelector('.header').offsetHeight;
 
-    // Agregar un desplazamiento adicional para los enlaces de anclaje
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(event) {
             event.preventDefault();
@@ -69,6 +67,22 @@ document.addEventListener('DOMContentLoaded', function() {
                     behavior: 'smooth'
                 });
             }
+        });
+    });
+
+    const menuButton = document.getElementById('menu-mobile');
+    const menu = document.getElementById('main-menu');
+    const menuItems = menu.querySelectorAll('a'); // Selecciona todos los enlaces dentro del menú
+
+    // Mostrar/ocultar menú al hacer clic en el botón de hamburguesa
+    menuButton.addEventListener('click', function() {
+        menu.classList.toggle('nav-bar__menu--active');
+    });
+
+    // Cerrar el menú al hacer clic en un enlace
+    menuItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            menu.classList.remove('nav-bar__menu--active');
         });
     });
 });

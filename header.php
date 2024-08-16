@@ -19,7 +19,7 @@
                 <h1 class="hide">Franco Viola</h1>
                 <a class="app-brand" href="<?php echo home_url() ?>">
                     <?php $logo = get_field('logo_principal', 'options'); ?>
-                    <img src="<?php echo $logo['url']; ?>" class="app-brand__logo">
+                    <img src="<?php echo $logo['url']; ?>" loading="lazy" class="app-brand__logo">
                 </a>
             </div>
 

@@ -1,18 +1,22 @@
 <?php
-$image = get_field('imagen'); // Nombre del campo de imagen en ACF
-$description = get_field('texto'); // Nombre del campo de descripción en ACF
+$image = get_field('imagen');
+$description = get_field('texto');
+$titulo = get_field('titulo');
 ?>
-<div class="section img-con-descripcion gutter-vertical-3" id="quienes-somos">
+<div class="section img-con-descripcion gutter-top-3 gutter-bottom-5" id="quienes-somos">
     <div class="container">
         <div class="is-flex">
-            <?php if ($image): ?>
-                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>">
-            <?php endif; ?>
             <?php if ($description): ?>
                 <div class="text-container">
-                    <p><?php echo esc_html($description); ?></p>
+                    <div class="content">
+                        <h2><?php echo $titulo; ?></h2>
+                        <p><?php echo esc_html($description); ?></p>
+                    </div>
                 </div>
             <?php endif; ?>
         </div>
     </div>
+    <?php if ($image): ?>
+        <img src="<?php echo esc_url($image['url']); ?>" loading="lazy" alt="<?php echo esc_attr($image['alt']); ?>">
+    <?php endif; ?>
 </div>

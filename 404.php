@@ -2,7 +2,7 @@
 get_header(); ?>
 <?php $pagina = get_field('page_404', 'options'); ?>
 <main>
-    <section class="gutter-top-12 gutter-bottom-4 no-overflow gutter-vertical-2">
+    <section class="gutter-top-12 gutter-bottom-18 no-overflow gutter-vertical-1">
         <div class="container">
             <div class="row">
                 <div class="gr-12 gr-12@medium">
@@ -11,7 +11,7 @@ get_header(); ?>
                             <div class="gr-6 gr-8@medium gr-10@tablet gr-12@small is-flex-col-center-middle has-gap-1 text-center">
                                 <h1 class="horizon__title"><?php echo $pagina['titulo'] ?></h1>
                                 <div class="horizon__excerpt margin-top-2">
-                                    <?php echo apply_filters('the_content', $pagina['bajada']) ?>
+                                    <?php echo apply_filters('the_content', $pagina['descripcion']) ?>
                                 </div>
                                 <?php if(isset($pagina['enlace']) && !empty($pagina['enlace'])): $enlace = $pagina['enlace'] ?>
                                 <div class="horizon__action gutter-top-2">

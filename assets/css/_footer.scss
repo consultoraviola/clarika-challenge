@@ -45,4 +45,20 @@
             }
         }
     }
+
+    @media (max-width: 768px) {
+        .footer__container {
+            flex-direction: column;
+            gap: $size_20;
+
+            .footer__menu {
+                .footer__menu-list {
+                    flex-direction: column;
+                    gap: $size_10;
+                    padding: 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

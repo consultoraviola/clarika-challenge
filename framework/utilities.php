@@ -11,14 +11,14 @@ function home_slider_shortcode()
     if (have_rows('home_slider')) {
         ob_start();
 ?>
-        <div class="home-slider" id="hero">
+        <section class="home-slider" id="hero">
             <div class="home-slider__wrapper">
                 <?php while (have_rows('home_slider')) : the_row();
                     $slide_image = get_sub_field('imagen');
                     $slide_title = get_sub_field('descripcion'); ?>
 
                     <div class="home-slider__slide">
-                        <img src="<?php echo esc_url($slide_image['url']); ?>" alt="<?php echo esc_attr($slide_title); ?>">
+                        <img src="<?php echo esc_url($slide_image['url']); ?>" loading="lazy" alt="<?php echo esc_attr($slide_title); ?>">
                         <div class="container">
                             <p><?php echo esc_html($slide_title); ?></p>
                         </div>
@@ -27,9 +27,9 @@ function home_slider_shortcode()
                 <?php endwhile; ?>
             </div>
 
-            <button class="home-slider__nav home-slider__nav--prev" aria-label="Anterior">&#10094;</button>
-            <button class="home-slider__nav home-slider__nav--next" aria-label="Siguiente">&#10095;</button>
-        </div>
+            <button class="home-slider__nav home-slider__nav--prev" aria-label="Anterior"></button>
+            <button class="home-slider__nav home-slider__nav--next" aria-label="Siguiente"></button>
+        </section>
         <?php
         return ob_get_clean();
     }
@@ -42,35 +42,44 @@ function cpt_grid_shortcode()
 
     $args = array(
         'post_type' => 'foto',
-        'posts_per_page' => 6,
+        'posts_per_page' => 16,
     );
 
-    $cpt_query = new WP_Query($args);
+    $posts = get_posts($args);
 
-    if ($cpt_query->have_posts()) :
-        echo '<div class="container gutter-vertical-1" id="portfolio">';
+    if (!empty($posts)) :
+        echo '<section class="portfolio gutter-top-1 gutter-bottom-5" id="portfolio">';
+        echo '<div class="container">';
         echo '<h2>Portfolio</h2>';
         echo '<div class="cpt-grid">';
-        while ($cpt_query->have_posts()) : $cpt_query->the_post();
-        ?>
-            <div class="cpt-grid__item">
-                <?php if (has_post_thumbnail()) : ?>
+
+        foreach ($posts as $post) :
+            setup_postdata($post); // Preparar datos del post para usar las funciones de WordPress
+
+            if (has_post_thumbnail($post->ID)) : ?>
+                <div class="cpt-grid__item">
                     <div class="cpt-grid__image">
-                        <?php the_post_thumbnail('large'); ?>
+                        <img src="<?php echo get_the_post_thumbnail_url($post->ID); ?>" alt="" loading="lazy">
+                        <div class="cpt-grid__overlay">
+                            <h3><?php echo get_the_title($post->ID); ?></h3>
+                            <p><?php echo get_the_excerpt($post->ID); ?></p>
+                        </div>
                     </div>
-                <?php endif; ?>
-                <h3><?php the_title(); ?></h3>
-                <p><?php the_excerpt(); ?></p>
-            </div>
-<?php
-        endwhile;
+                </div>
+            <?php endif;
+
+        endforeach;
+        
         echo '</div>';
         echo '</div>';
-        wp_reset_postdata();
+        echo '</section>';
+
+        wp_reset_postdata(); // Restablecer datos del post global después del bucle
     endif;
 
     return ob_get_clean();
 }
+
 add_shortcode('cpt_grid', 'cpt_grid_shortcode');
 
 

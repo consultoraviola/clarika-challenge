@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 $font_principal : 'Open Sans', sans-serif;
+$font_secondary : "Montserrat", sans-serif;
 
 ////////////////////////////////////////
 // Font Sizes
@@ -68,114 +70,7 @@ $color_light: #f9f9f9 !default;
 $color_white: #FFFFFF !default;
 $color_placeholder: #00000084 !default;
 
-//!SPECIAL COLORS
-
-$color_main_regular: #0270b9 !default;
+$color_main_regular:  #b41ef5 !default;
 $color_main_light: lighten($color_main_regular, 10%) !default;
 $color_main_dark: darken($color_main_regular, 10%) !default;
-
-$color_secondary_regular: #C91E24 !default;
-$color_secondary_light: lighten($color_secondary_regular, 10%) !default;
-$color_secondary_dark: darken($color_secondary_regular, 10%) !default;
-
-////////////////////////////////////////
-///// Breakpoints & sizes
-////////////////////////////////////////
-
-$container:   80rem !default;      // ~1280px
-$large:     64rem !default;      // ~1024px
-$medium:    53.125rem !default;  // ~850px
-$tablet:    48rem !default;      // ~768px
-$small:     37.5rem !default;  	// ~600px
-$phablet:   31.25rem !default;   // ~500px
-$phone :    23.75rem !default;   // ~380px
-
-$medias_map: (
-   container: $container,
-   large: $large,
-   medium: $medium,
-   tablet: $tablet,
-   small: $small,
-   phablet: $phablet,
-   phone: $phone
-);
-
-////////////////////////////////////////
-////////// Media/Element Queries
-////////////////////////////////////////
-//use
-//@include media (mq-down){}
-//@include media (mq-up){}
-
-@mixin media($type) {
-   @if $type==container-up {
-      @media only screen and (min-width: $container) {
-         @content;
-      }
-   }
-   @if $type==container-down {
-      @media only screen and (max-width: $container) {
-         @content;
-      }
-   }
-   @if $type==large-up {
-      @media only screen and (min-width: $large ) {
-         @content;
-      }
-   }
-   @if $type==large-down {
-      @media only screen and (max-width: $large) {
-         @content;
-      }
-	}
-   @if $type==medium-up {
-      @media only screen and (min-width: $medium ) {
-         @content; 
-      }
-   }
-   @if $type==medium-down {
-      @media only screen and (max-width: $medium) {
-         @content;
-      }
-   }
-   @if $type==tablet-up {
-      @media only screen and (min-width: $tablet) {
-         @content;
-      }
-	}
-   @if $type==tablet-down {
-      @media only screen and (max-width: $tablet) {
-         @content;
-      }
-   }
-   @if $type==small-up {
-      @media only screen and (min-width: $small ) {
-         @content;
-      }
-   }
-   @if $type==small-down {
-      @media only screen and (max-width: $small) {
-         @content;
-      }
-   }
-   @if $type==phablet-up {
-      @media only screen and (min-width: $phablet ) {
-         @content;
-      }
-   }
-   @if $type==phablet-down {
-      @media only screen and (max-width: $phablet) {
-         @content;
-      }
-   }
-   @if $type==phone-up {
-      @media only screen and (min-width: $phone ) {
-         @content;
-      }
-   }
-   @if $type==phone-down {
-      @media only screen and (max-width: $phone) {
-         @content;
-      }
-   }
-}
+$color_main_regular_hover : $color_black;

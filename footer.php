@@ -6,7 +6,7 @@ $logo = get_field('logo_footer', 'options');
     <div class="footer__container">
         <div class="footer__logo">
             <a href="<?php echo home_url(); ?>">
-                <img src="<?php echo esc_url($logo['url']); ?>" alt="Logo Footer">
+                <img src="<?php echo esc_url($logo['url']); ?>" loading="lazy" alt="Logo Footer">
             </a>
         </div>
         <nav class="footer__menu">

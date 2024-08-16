@@ -25,6 +25,10 @@
                 &__logo {
                     max-width: 170px;
                     height: auto;
+
+                    @media screen and (max-width: 768px) {
+                        max-width: 120px;
+                    }
                 }
             }
         }
@@ -32,37 +36,53 @@
         &__menu {
             display: flex;
             align-items: center;
-    
+            
             .nav-bar__mobile-menu {
                 display: none;
                 background-color: transparent;
                 border: none;
                 cursor: pointer;
-    
+        
                 span {
                     display: block;
-                    width: $size_20;
-                    height: $size_2;
+                    width: 20px;
+                    height: 2px;
                     background-color: $color_dark;
-                    margin-bottom: $size_4;
-    
+                    margin-bottom: 4px;
+        
                     &:last-child {
                         margin-bottom: 0;
                     }
                 }
             }
-    
+        
             @media (max-width: 768px) {
                 .nav-bar__mobile-menu {
                     display: block;
                 }
-    
+        
                 #main-menu {
                     display: none;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background-color: $color_light;
+                    padding: 1rem 0 2rem;
+                    z-index: 9999;
+                    margin: 0;
+                }
+        
+                &.nav-bar__menu--active {
+                    display: flex !important;
                 }
             }
         }
     
+        @media screen and (max-width: 768px) {
+            height: 80px;
+        }
     }
 
     .menu-top {
@@ -74,6 +94,11 @@
             gap: 8px;
             height: 34px;
             align-items: center;
+
+            @media screen and (max-width: 768px) {
+                justify-content: space-evenly;
+                height: 40px;
+            }
         }
 
         .icon {
@@ -96,9 +121,12 @@
                 }
             }
         }
+
+        @media screen and (max-width: 768px) {
+
+        }
     }
 
-    // Styles for desktop menu
     #main-menu {
         display: flex;
         gap: $size_20;
