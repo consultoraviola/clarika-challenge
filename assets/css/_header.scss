@@ -1,0 +1,123 @@
+.header {
+    background-color: $color_light;
+    border-bottom: 1px solid $color_border;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    .nav-bar {
+        height: 100px;
+        .container{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: $size_10 $size_20;
+            height: -webkit-fill-available;
+        }
+
+        &__brand {
+            .app-brand {
+                display: flex;
+                align-items: center;
+    
+                &__logo {
+                    max-width: 170px;
+                    height: auto;
+                }
+            }
+        }
+
+        &__menu {
+            display: flex;
+            align-items: center;
+    
+            .nav-bar__mobile-menu {
+                display: none;
+                background-color: transparent;
+                border: none;
+                cursor: pointer;
+    
+                span {
+                    display: block;
+                    width: $size_20;
+                    height: $size_2;
+                    background-color: $color_dark;
+                    margin-bottom: $size_4;
+    
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+    
+            @media (max-width: 768px) {
+                .nav-bar__mobile-menu {
+                    display: block;
+                }
+    
+                #main-menu {
+                    display: none;
+                }
+            }
+        }
+    
+    }
+
+    .menu-top {
+        background-color: $color_main_regular;
+
+        .container {
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+            height: 34px;
+            align-items: center;
+        }
+
+        .icon {
+            &-instagram {
+                &:before {
+                    content: url('./../imgs/icon-ig.svg');
+    
+                }
+            }
+
+            &-telegram {
+                &:before {
+                    content: url('./../imgs/icon-telegram.svg');
+                }
+            }
+
+            &-linkedin {
+                &:before {
+                    content: url('./../imgs/icon-ln.svg');
+                }
+            }
+        }
+    }
+
+    // Styles for desktop menu
+    #main-menu {
+        display: flex;
+        gap: $size_20;
+
+        li {
+            list-style: none;
+
+            a {
+                color: $color_dark;
+                font-weight: $weight_medium;
+                text-decoration: none;
+                font-size: $size_16;
+                padding: $size_10 0;
+                transition: color 0.3s ease;
+
+                &:hover {
+                    color: $color_main_regular;
+                }
+            }
+        }
+    }
+}
